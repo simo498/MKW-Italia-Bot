@@ -66,7 +66,7 @@ export async function log(...args: any[]) {
     const str = args.map(arg => String(arg)).join('\n');
     logger.info(str); //sentry
     try { await Logger.log(...args); }
-    catch (e) { /* logError("Failed to log:", e); */ }
+    catch (e) { console.error("Failed to log:", e); }
 }
 
 export async function logError(...args: any[]) {

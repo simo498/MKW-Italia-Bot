@@ -106,7 +106,7 @@ export abstract class CommandBase {
                         });
                     }
                 } catch (e) {
-                    //skip
+                    // Interaction may already be replied to or expired; ignore secondary reply errors
                 }
             }
     }

@@ -65,7 +65,7 @@ export async function awaitModalSubmit(interaction: MessageComponentInteraction,
 
    try { retInteraction = await interaction.awaitModalSubmit({time: timeout})}
    catch (e) {
-         //skip
+         // Modal submit timed out or was dismissed; return undefined to let the caller handle it
    }
 
    return retInteraction;

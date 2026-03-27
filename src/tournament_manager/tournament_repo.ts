@@ -35,7 +35,7 @@ export class TournamentRepo {
         let tournaments: Tournament[] = [];
         
         for (const doc of res) {
-            const tournament = (doc as any) as Tournament;
+            const tournament = doc.toObject() as Tournament;
             tournaments.push(tournament);
         }
         return tournaments;
@@ -45,7 +45,7 @@ export class TournamentRepo {
         let res = await this.tournaments.findById(id).exec();
 
         if (res) {
-            return (res as any) as Tournament;
+            return res.toObject() as Tournament;
         }
     }
 }

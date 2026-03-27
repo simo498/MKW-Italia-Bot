@@ -16,13 +16,13 @@ export class RemoveMMR extends SlashCommandBase {
         const user_id = options.getInteractionUser().id;
         const player = await Application.getInstance().getPlayersManager().getPlayer(user_id);
         if(!player) {
-            replyEphemeral(options.interaction, "Non hai un MMR da rimuovere!");
+            await replyEphemeral(options.interaction, "Non hai un MMR da rimuovere!");
             return;
         }
         else {
-            player.MMR = null as any;
+            player.MMR = undefined;
             await Application.getInstance().getPlayersManager().updatePlayer(player);
-            replyEphemeral(options.interaction, "Il tuo MMR è stato rimosso!");
+            await replyEphemeral(options.interaction, "Il tuo MMR è stato rimosso!");
             await MMR.removeRole(player);
         }
     }

@@ -25,9 +25,10 @@ export class PlayersManager {
     public constructor() { }
 
     public async start() {
+        const PLAYER_INFO_UPDATE_INTERVAL_MS = 60 * 60 * 1000;
         this.playersRepo = Application.getInstance().getDb().getModels().playersModel;
         Application.getInstance().getClient().on("ready", async () => {
-            execAndLoop(this.updateAllPlayersInfo.bind(this), 1000 * 60 * 60);
+            execAndLoop(this.updateAllPlayersInfo.bind(this), PLAYER_INFO_UPDATE_INTERVAL_MS);
             await createMMRTable();
             this.emitter.on("update", updateMMRTable);
             this.emitter.on("rankChange", onRankChange);
@@ -80,7 +81,7 @@ export class PlayersManager {
         let res = await this.playersRepo.findOne({ playerId: playerId }).exec();
 
         if (res) {
-            return (res as any) as PlayerEntry;
+            return res.toObject() as PlayerEntry;
         }
     }
 
@@ -98,7 +99,7 @@ export class PlayersManager {
         let players: PlayerEntry[] = [];
 
         for (const doc of res) {
-            const player = (doc as any) as PlayerEntry;
+            const player = doc.toObject() as PlayerEntry;
             players.push(player);
         }
         return players;
