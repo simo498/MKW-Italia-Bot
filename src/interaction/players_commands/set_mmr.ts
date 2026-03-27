@@ -38,7 +38,7 @@ export class SetMMR extends SlashCommandBase {
                 .setDescription(`Il tuo MMR è stato aggiornato a ${mmr.getMMRValue()}.\n Rank: ${Rank[mmr.rank]}\n[Link](${await player.MMR?.getMMRLink()})\n In caso avessi falsificato (volontariamente o non) il tuo mmr uno staff si appresterà a correggerlo`)
                 .setColor(Globals.STANDARD_HEX_COLOR);
             if (options.interaction.isRepliable()) {
-                options.interaction.editReply({
+                await options.interaction.editReply({
                     embeds: [embed]
                 })
             }
@@ -50,7 +50,7 @@ export class SetMMR extends SlashCommandBase {
                 .setColor(Globals.STANDARD_HEX_COLOR)
                 .setDescription(`${options.getInteractionUser()}\nMMR:${mmr.getMMRValue()}.\nRank: ${Rank[mmr.rank]}\n[Link](${await player.MMR?.getMMRLink()})\n`)
             if (staffMMRChannel && staffMMRChannel.isSendable()) {
-                staffMMRChannel.send({ embeds: [staffEmbed] });
+                await staffMMRChannel.send({ embeds: [staffEmbed] });
             }
             await MMR.setRole(player);
         }

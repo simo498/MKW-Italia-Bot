@@ -217,11 +217,11 @@ export class TournamentManager {
     }
 
     public async getTournamentById(uuid: ObjectId | string): Promise<Tournament | undefined> {
-        if (uuid instanceof String) {
+        if (typeof uuid === 'string') {
             uuid = new ObjectId(uuid);
         }
 
-        return this.tournaments.getTouruamentById(uuid as ObjectId);
+        return this.tournaments.getTournamentById(uuid as ObjectId);
     }
 
 }

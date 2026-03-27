@@ -41,7 +41,7 @@ export class TournamentRepo {
         return tournaments;
     }
 
-    public async getTouruamentById(id: ObjectId): Promise<Tournament | undefined> {
+    public async getTournamentById(id: ObjectId): Promise<Tournament | undefined> {
         let res = await this.tournaments.findById(id).exec();
 
         if (res) {

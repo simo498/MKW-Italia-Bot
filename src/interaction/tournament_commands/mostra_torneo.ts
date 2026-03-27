@@ -33,7 +33,8 @@ class MostraTorneo extends SlashCommandBase {
         const id = interaction.options.getString(TOURNAMENT_ID_OPTION)!;
         const tournament = await Application.getInstance().getTournamentManager().getTournamentById(id);
         if (!tournament) {
-            replyEphemeral(interaction, "Il torneo non esiste");
+            await replyEphemeral(interaction, "Il torneo non esiste");
+            return;
         }
 
         if (channel?.isSendable()) {

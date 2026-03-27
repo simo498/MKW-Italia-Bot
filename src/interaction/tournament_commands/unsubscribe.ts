@@ -39,12 +39,12 @@ export class Unsubscribe extends SlashCommandBase {
         const tournament = await Application.getInstance().getTournamentManager().getTournamentById(id);
 
         if (!tournament) {
-            replyEphemeral(options.interaction, "Torneo non trovato");
+            await replyEphemeral(options.interaction, "Torneo non trovato");
             return;
         }
 
         if (tournament?.isPlayerPartecipating(options.getInteractionUser().id) === false) {
-            options.interaction.reply({
+            await options.interaction.reply({
                 content: `Non sei iscritto al torneo **${tournament?.getName()}**`,
                 ephemeral: true
             });
@@ -53,7 +53,7 @@ export class Unsubscribe extends SlashCommandBase {
 
         tournament.removePlayer(options.getInteractionUser().id);
         await Application.getInstance().getTournamentManager().updateTournament(tournament);
-        replyEphemeral(options.interaction, "Disiscrizione avvenuta con successo, utente: " + options.getInteractionUser().username);
+        await replyEphemeral(options.interaction, "Disiscrizione avvenuta con successo, utente: " + options.getInteractionUser().username);
     }
 }
 

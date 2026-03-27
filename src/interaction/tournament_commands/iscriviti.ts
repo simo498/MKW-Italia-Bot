@@ -29,7 +29,7 @@ export class Iscriviti extends SlashCommandBase {
             return;
         }
 
-        let id = options.getRequiredStringOption("evento");
+        let id = options.getRequiredStringOption("tournament_id");
         const tournament = await Application.getInstance().getTournamentManager().getTournamentById(id);
 
         if (!tournament) {
@@ -38,7 +38,7 @@ export class Iscriviti extends SlashCommandBase {
         }
 
         if (tournament?.isPlayerPartecipating(options.getInteractionUser().id) === true) {
-            replyEphemeral(
+            await replyEphemeral(
                 interaction,
                 `Sei già iscritto al torneo **${tournament?.getName()}**`
             )
@@ -61,7 +61,7 @@ export class IscrivitiBtn extends Iscriviti {
 
     public createButton(): ButtonBuilder {
         let options = new Map();
-        options.set("tournamet_id", this.tournamentId);
+        options.set("tournament_id", this.tournamentId);
 
         return new ButtonBuilder()
             .setCustomId(this.createCustomId(options))

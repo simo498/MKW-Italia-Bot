@@ -73,14 +73,14 @@ export class MMR {
     public static async removeRole(player: PlayerEntry) {
         const guild = await Application.getInstance().getMainGuild();
         const roles = (await BotDefaults.getDefaults()).rankRoles;
-        const user = guild.members.fetch(player.playerId.toString());
+        const user = await guild.members.fetch(player.playerId.toString());
         if (!user) {
             throw new Error(`User with id ${player.playerId} not found in guild`);
         }
         for (const roleId of roles) {
             const role = await guild.roles.fetch(roleId);
             if (role) {
-                await (await user).roles.remove(role);
+                await user.roles.remove(role);
             }
         }
     }
@@ -94,7 +94,7 @@ export class MMR {
         }
         const guild = await Application.getInstance().getMainGuild();
         const roles = (await BotDefaults.getDefaults()).rankRoles;
-        const user = guild.members.fetch(player.playerId.toString());
+        const user = await guild.members.fetch(player.playerId.toString());
         if (!user) {
             throw new Error(`User with id ${player.playerId} not found in guild`);
         }
@@ -102,7 +102,7 @@ export class MMR {
         if (!newRole) {
             throw new Error(`Role with id ${roles[player.MMR.rank]} not found in guild`);
         }
-        await (await user).roles.add(newRole);
+        await user.roles.add(newRole);
     }
 
     public static async getHighestMMR(id: string): Promise<MMR> {
