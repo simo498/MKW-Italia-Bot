@@ -5,7 +5,7 @@
     "@typegoose/typegoose": "^12.17.0",
     "axios": "^1.13.4",
     "cheerio": "^1.2.0",
-    "discord.js": "^14.0.0",
+    "discord.js": "^14.26.2",
     "dotenv": "^17.2.1",
     "express": "^5.2.0",
     "moment-timezone": "^0.6.0",
@@ -14,13 +14,13 @@
     "node.js": "^0.0.1-security",
     "tiny-typed-emitter": "^2.1.0",
     "uuid": "^11.1.0",
-    "undici": ">=7.24.0"
+    "undici": ">=8.0.2"
   },
   "devDependencies": {
     "@types/express": "^5.0.3",
     "@types/uuid": "^10.0.0",
     "tsx": "^4.21.0",
     "typescript": "^5.9.3",
-    "undici": ">=7.24.0"
+    "undici": ">=8.0.2"
   }
 }
