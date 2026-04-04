@@ -1,3 +1,5 @@
+// Note: the source file is named frend_codes.ts (missing the 'i'); the test
+// file intentionally mirrors that name so the source/test pair stays aligned.
 // Mock modules that trigger problematic side-effects (e.g. globals.ts throws when
 // required env vars are absent) so that only the pure FriendCode class is exercised.
 jest.mock('../application');
