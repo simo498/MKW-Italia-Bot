@@ -1,4 +1,7 @@
 {
+  "scripts": {
+    "test": "jest"
+  },
   "dependencies": {
     "@launchdarkly/node-server-sdk": "^9.10.4",
     "@sentry/node": "^10.40.0",
@@ -13,12 +16,15 @@
     "mongoose": "^8.16.5",
     "node.js": "^0.0.1-security",
     "tiny-typed-emitter": "^2.1.0",
-    "uuid": "^11.1.0",
-    "undici": ">=8.0.2"
+    "undici": ">=8.0.2",
+    "uuid": "^11.1.0"
   },
   "devDependencies": {
     "@types/express": "^5.0.3",
+    "@types/jest": "^29.5.14",
     "@types/uuid": "^10.0.0",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.4.9",
     "tsx": "^4.21.0",
     "typescript": "^5.9.3",
     "undici": ">=8.0.2"
