@@ -45,10 +45,10 @@ export class SearchFc extends ButtonOrModalCommandBase {
 
         const fc = await dBGetFriendCode(foundUser);
         if (!fc) {
-            await replyEphemeral(replyInteraction, `<@${foundUser}> non ha un codice amico registrato`);
+            await replyEphemeral(replyInteraction, `<${foundUser}> non ha un codice amico registrato`);
             return;
         }
-        await replyEphemeral(replyInteraction, `Il codice amico di <@${foundUser}> è: ${inlineCode(fc.toString())}`);
+        await replyEphemeral(replyInteraction, `Il codice amico di <${foundUser}> è: ${inlineCode(fc.toString())}`);
 
     }
 }
