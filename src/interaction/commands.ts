@@ -28,6 +28,8 @@ import { RemoveMMRButton } from "./players_commands/remove_mmr_button";
 import { ManSetMMR } from "./players_commands/man_set_mmr";
 import { ManRemoveMMR } from "./players_commands/man_remove_mmr";
 import { ResetRole } from "./util_commands/reset_role";
+import { FeatureFlagsManager } from "../feature_flags/feature_flags_manager";
+import { FeatureFlagKeys } from "../feature_flags/feature_flag_keys";
 
 async function bindCommandsInner(commandsManager: CommandsManager) {
     //TOURNAMENT COMMANDS
@@ -71,7 +73,9 @@ export async function bindCommands(client: Client) {
 
     await bindCommandsInner(commandsManager);
     log("Aggiornamento comandi in corso...");
-    commandsManager.registerCommands(client).catch(e => logError(e));
+    if(await FeatureFlagsManager.getBooleanValueFor(FeatureFlagKeys.UpdateSlashCommands, true)) {
+        commandsManager.registerCommands(client).catch(e => logError(e));
+    }
 }
 
 
