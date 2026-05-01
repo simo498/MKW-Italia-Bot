@@ -50,7 +50,7 @@ export async function updateMMRTable() {
     for (const player of players) {
         const dsUser = (await Application.getInstance().getMainGuild()).members.cache.get(player.playerId.toString());
         if (!dsUser) {
-            throw new Error(`User with id ${player.playerId} not found in guild`);
+            continue;
         }
         if (player.MMR) {
             msg += `\`${counter}.\` ${dsUser} (${dsUser.displayName}) - MMR: \`${player.MMR.getMMRValue()}\` ${Rank[player.MMR.rank]} ${await MMR.rankToEmoji(player.MMR.rank)}\n`;
