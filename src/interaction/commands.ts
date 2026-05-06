@@ -11,7 +11,6 @@ import { AggiornaNomeTorneo } from "./tournament_commands/aggiorna_nome";
 import { RimuoviEvento } from "./tournament_commands/rimuovi_evento";
 import { ConfermaRimozioneTorneo } from "./tournament_commands/conferma_rimozione";
 import { ManSubscribeEvent as ManSubscribeEvent, ManUnsubEvent } from "./tournament_commands/man_sub_unsub";
-// Friend code commands
 import { SetFc } from "./friend_codes_commands/setfc";
 import { DelFc } from "./friend_codes_commands/delfc";
 import { GetFc } from "./friend_codes_commands/getfc";
